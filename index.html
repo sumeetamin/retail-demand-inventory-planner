@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore rolling-origin SKU demand forecasts and a lead-time reorder-point scenario using the UCI Online Retail II dataset.">
+  <title>Retail Demand & Inventory Replenishment Lab | Applied ML & AI</title>
+  <link rel="stylesheet" href="../../styles.css"><link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="../../">SA <span>Applied ML</span></a><span class="header-note">FORECASTING · DEMO 04</span></header>
+  <main class="app-main">
+    <a class="back" href="../../">← ALL PROTOTYPES</a>
+    <section class="app-hero"><div><p class="eyebrow">TIME-SERIES BACKTEST · INVENTORY POLICY</p><h1>Retail Demand &amp; Inventory Replenishment</h1><p>Compare simple daily-SKU forecasts through rolling time splits, then explore how lead time and service targets change a replenishment trigger.</p></div><span class="status-pill">● REAL PUBLIC DATA</span></section>
+    <section id="load-state" class="panel note" aria-live="polite">Loading the measured UCI backtest…</section>
+    <section id="dashboard" hidden>
+      <div id="headline-metrics" class="metrics"></div>
+      <div class="dashboard-grid retail-grid">
+        <section class="panel"><h2>Forecast backtest</h2><p id="backtest-note" class="note"></p><div class="table-wrap"><table><thead><tr><th>Forecast</th><th>Validation WAPE</th><th>Test WAPE</th><th>Test MAE</th><th>Test bias</th></tr></thead><tbody id="forecast-rows"></tbody></table></div><p class="note">WAPE is total absolute error divided by total actual units. Negative bias means under-forecasting. Product selection and model selection use training/validation periods only.</p></section>
+        <section class="panel"><h2>Inspect a high-volume product</h2><label class="helper" for="sku">SKU selected from pre-test-period sales</label><select id="sku" class="select"></select><div id="sku-summary" class="sku-summary"></div><div class="chart-wrap"><svg id="demand-chart" class="chart" role="img" aria-label="Recent weekly unit demand and next-seven-day forecast for selected product"></svg></div><p class="note">History and next-week forecast are based only on data before the final holdout period.</p></section>
+      </div>
+      <section class="panel"><h2>Reorder-point what-if</h2><p class="note">This educational scenario assumes independent daily demand and normally distributed lead-time demand. It is not a service guarantee. Adjust assumptions to see their effect.</p>
+        <div class="scenario-grid"><div>
+          <div class="form-row"><label for="lead-time">Supplier lead time <output id="lead-time-out">7 days</output></label><input id="lead-time" type="range" min="1" max="28" step="1" value="7"></div>
+          <div class="form-row"><label for="service-target">Cycle-service target <output id="service-target-out">95%</output></label><input id="service-target" type="range" min="90" max="99" step="1" value="95"></div>
+          <div class="form-row"><label for="on-hand">Available on hand <output id="on-hand-out">0 units</output></label><input id="on-hand" type="range" min="0" max="500" step="1" value="0"></div>
+        </div><div id="inventory-metrics" class="inventory-metrics"></div></div>
+      </section>
+      <section class="panel"><h2>Data and limitations</h2><ul id="limitations" class="limitations"></ul><p class="source-note">Data: <a href="https://archive.ics.uci.edu/dataset/502/online+retail">UCI Online Retail II</a> · CC BY 4.0 · Chen (2012), DOI: 10.24432/C5CG6D. Cancelled invoices, returns and nonpositive quantity rows are excluded from the unit-demand benchmark. <a href="https://github.com/sumeetamin/applied-ml-ai-prototypes/tree/main/benchmarks/retail-inventory">Reproduction code and protocol</a>.</p></section>
+    </section>
+    <footer class="footer-small">Real historical transactions · Aggregate product report only · No customer IDs or invoice records published · <a href="../../">Project home</a></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
+
