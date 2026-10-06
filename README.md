@@ -2,6 +2,10 @@
 
 A rolling-origin demand-forecast comparison and an interactive reorder-point scenario based on real UCI Online Retail II transactions.
 
+**[Open live demo](https://sumeetamin.github.io/retail-demand-inventory-planner/)**
+
+On the final four weekly test folds, the trailing 28-day mean achieved 87.5% WAPE and 99.04 units of MAE per SKU-day, compared with 94.3% WAPE for the weekly seasonal-naive baseline. Forecast error remains high, so the dashboard presents this as a baseline comparison rather than a production-ready replenishment forecast.
+
 ## What is measured
 
 - Positive item quantities are aggregated to daily demand for each SKU; canceled invoices, returns/nonpositive quantities and rows with invalid dates or missing item codes are excluded.
