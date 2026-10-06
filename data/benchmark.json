@@ -1,0 +1,919 @@
+{
+  "project": "Retail Demand & Inventory Replenishment Lab",
+  "dataset": {
+    "name": "Online Retail II",
+    "source": "UCI Machine Learning Repository",
+    "source_url": "https://archive.ics.uci.edu/dataset/502/online+retail",
+    "citation": "Chen, D. (2012). Online Retail II. UCI ML Repository. DOI: 10.24432/C5CG6D.",
+    "license": "CC BY 4.0",
+    "workbook_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+    "source_rows": 1067371,
+    "valid_positive_sale_rows": 1044420,
+    "canceled_invoice_rows_excluded": 19494,
+    "nonpositive_or_invalid_rows_excluded": 22950,
+    "first_sale_date": "2009-12-01",
+    "last_sale_date": "2011-12-09",
+    "selected_skus": 12
+  },
+  "protocol": {
+    "split": "8 weekly rolling-origin folds over final 56 days; first 4 validation, last 4 untouched test",
+    "product_selection": "Top 12 SKU by positive sales quantity strictly before holdout start",
+    "candidates": [
+      "weekly_seasonal_naive",
+      "trailing_28_day_mean"
+    ],
+    "selected_model": "trailing_28_day_mean",
+    "selection_metric": "validation WAPE; no tuning on final four test folds",
+    "inventory_policy": "Normal lead-time demand approximation; scenario only, not a calibrated service guarantee",
+    "python": "3.14.3",
+    "pandas": "3.0.6",
+    "run_seconds": 203.606,
+    "folds": [
+      {
+        "week_start": "2011-10-15",
+        "partition": "validation",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-10-22",
+        "partition": "validation",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-10-29",
+        "partition": "validation",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-11-05",
+        "partition": "validation",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-11-12",
+        "partition": "test",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-11-19",
+        "partition": "test",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-11-26",
+        "partition": "test",
+        "sku_days": 84
+      },
+      {
+        "week_start": "2011-12-03",
+        "partition": "test",
+        "sku_days": 84
+      }
+    ]
+  },
+  "validation": {
+    "weekly_seasonal_naive": {
+      "mae_units_per_sku_day": 141.04761904761904,
+      "wape": 1.1593805807666904,
+      "bias_units_per_sku_day": -22.05952380952381,
+      "actual_units": 40877.0,
+      "forecast_units": 33465.0
+    },
+    "trailing_28_day_mean": {
+      "mae_units_per_sku_day": 115.9792729591837,
+      "wape": 0.9533242584897552,
+      "bias_units_per_sku_day": -28.46354166666666,
+      "actual_units": 40877.0,
+      "forecast_units": 31313.25
+    }
+  },
+  "test": {
+    "weekly_seasonal_naive": {
+      "mae_units_per_sku_day": 106.69047619047619,
+      "wape": 0.9431698589770574,
+      "bias_units_per_sku_day": 11.886904761904763,
+      "actual_units": 38008.0,
+      "forecast_units": 42002.0
+    },
+    "trailing_28_day_mean": {
+      "mae_units_per_sku_day": 99.03539540816325,
+      "wape": 0.8754970758035902,
+      "bias_units_per_sku_day": 12.448660714285712,
+      "actual_units": 38008.0,
+      "forecast_units": 42190.75
+    }
+  },
+  "products": [
+    {
+      "stock_code": "84077",
+      "description": "WORLD WAR 2 GLIDERS ASSTD DESIGNS",
+      "training_units": 97814.0,
+      "mean_daily_demand": 101.55555555555556,
+      "std_daily_demand": 121.8819756158595,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 823.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 98.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 577.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 528.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 1056.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 290.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 432.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 1296.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 587.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 1008.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 989.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 586.0
+        }
+      ],
+      "next_7_day_forecast": [
+        114.92857142857143,
+        114.92857142857143,
+        114.92857142857143,
+        114.92857142857143,
+        114.92857142857143,
+        114.92857142857143,
+        114.92857142857143
+      ],
+      "forecast_total_7d": 804.5
+    },
+    {
+      "stock_code": "85123A",
+      "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+      "training_units": 93548.0,
+      "mean_daily_demand": 76.5111111111111,
+      "std_daily_demand": 86.03908759544802,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 780.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 441.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 466.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 296.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 773.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 394.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 440.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 658.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 705.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 402.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 165.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 624.0
+        }
+      ],
+      "next_7_day_forecast": [
+        70.60714285714286,
+        70.60714285714286,
+        70.60714285714286,
+        70.60714285714286,
+        70.60714285714286,
+        70.60714285714286,
+        70.60714285714286
+      ],
+      "forecast_total_7d": 494.2500000000001
+    },
+    {
+      "stock_code": "21212",
+      "description": "PACK OF 72 RETROSPOT CAKE CASES",
+      "training_units": 92360.0,
+      "mean_daily_demand": 98.27777777777777,
+      "std_daily_demand": 178.15893849535803,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 1083.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 445.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 335.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 1650.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 508.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 459.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 712.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 955.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 1028.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 359.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 477.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 475.0
+        }
+      ],
+      "next_7_day_forecast": [
+        83.64285714285714,
+        83.64285714285714,
+        83.64285714285714,
+        83.64285714285714,
+        83.64285714285714,
+        83.64285714285714,
+        83.64285714285714
+      ],
+      "forecast_total_7d": 585.4999999999999
+    },
+    {
+      "stock_code": "85099B",
+      "description": "JUMBO BAG RED RETROSPOT",
+      "training_units": 89574.0,
+      "mean_daily_demand": 166.16666666666666,
+      "std_daily_demand": 231.35993894430948,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 540.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 1050.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 1373.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 1356.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 1518.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 717.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 556.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 743.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 1667.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 929.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 2709.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 929.0
+        }
+      ],
+      "next_7_day_forecast": [
+        230.75,
+        230.75,
+        230.75,
+        230.75,
+        230.75,
+        230.75,
+        230.75
+      ],
+      "forecast_total_7d": 1615.25
+    },
+    {
+      "stock_code": "23166",
+      "description": "MEDIUM CERAMIC TOP STORAGE JAR",
+      "training_units": 77041.0,
+      "mean_daily_demand": 16.133333333333333,
+      "std_daily_demand": 37.97965155954264,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 362.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 128.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 59.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 141.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 82.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 24.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 129.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 39.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 92.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 79.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 42.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 82.0
+        }
+      ],
+      "next_7_day_forecast": [
+        10.607142857142858,
+        10.607142857142858,
+        10.607142857142858,
+        10.607142857142858,
+        10.607142857142858,
+        10.607142857142858,
+        10.607142857142858
+      ],
+      "forecast_total_7d": 74.25000000000001
+    },
+    {
+      "stock_code": "84879",
+      "description": "ASSORTED COLOUR BIRD ORNAMENT",
+      "training_units": 73446.0,
+      "mean_daily_demand": 129.66666666666666,
+      "std_daily_demand": 367.6182986239206,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 478.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 3800.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 1323.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 556.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 850.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 216.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 488.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 908.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 701.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 799.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 589.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 360.0
+        }
+      ],
+      "next_7_day_forecast": [
+        89.17857142857143,
+        89.17857142857143,
+        89.17857142857143,
+        89.17857142857143,
+        89.17857142857143,
+        89.17857142857143,
+        89.17857142857143
+      ],
+      "forecast_total_7d": 624.25
+    },
+    {
+      "stock_code": "17003",
+      "description": "BROCADE RING PURSE ",
+      "training_units": 68147.0,
+      "mean_daily_demand": 58.733333333333334,
+      "std_daily_demand": 155.10285097967244,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 149.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 146.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 144.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 78.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 940.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 291.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 180.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 109.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 857.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 931.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 376.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 72.0
+        }
+      ],
+      "next_7_day_forecast": [
+        79.85714285714286,
+        79.85714285714286,
+        79.85714285714286,
+        79.85714285714286,
+        79.85714285714286,
+        79.85714285714286,
+        79.85714285714286
+      ],
+      "forecast_total_7d": 559.0000000000001
+    },
+    {
+      "stock_code": "22197",
+      "description": "SMALL POPCORN HOLDER",
+      "training_units": 67560.0,
+      "mean_daily_demand": 138.22222222222223,
+      "std_daily_demand": 266.3863789149339,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 436.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 2178.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 1735.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 518.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 826.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 956.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 516.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 570.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 682.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 1675.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 835.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 878.0
+        }
+      ],
+      "next_7_day_forecast": [
+        146.78571428571428,
+        146.78571428571428,
+        146.78571428571428,
+        146.78571428571428,
+        146.78571428571428,
+        146.78571428571428,
+        146.78571428571428
+      ],
+      "forecast_total_7d": 1027.4999999999998
+    },
+    {
+      "stock_code": "21977",
+      "description": "PACK OF 60 PINK PAISLEY CAKE CASES",
+      "training_units": 54840.0,
+      "mean_daily_demand": 86.31111111111112,
+      "std_daily_demand": 171.21519703396885,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 742.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 271.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 248.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 879.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 876.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 205.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 664.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 790.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 402.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 213.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 877.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 246.0
+        }
+      ],
+      "next_7_day_forecast": [
+        62.17857142857143,
+        62.17857142857143,
+        62.17857142857143,
+        62.17857142857143,
+        62.17857142857143,
+        62.17857142857143,
+        62.17857142857143
+      ],
+      "forecast_total_7d": 435.25000000000006
+    },
+    {
+      "stock_code": "84991",
+      "description": "60 TEATIME FAIRY CAKE CASES",
+      "training_units": 51955.0,
+      "mean_daily_demand": 52.18888888888889,
+      "std_daily_demand": 102.13385075802084,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 402.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 248.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 340.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 648.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 155.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 141.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 910.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 733.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 426.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 220.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 157.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 193.0
+        }
+      ],
+      "next_7_day_forecast": [
+        35.67857142857143,
+        35.67857142857143,
+        35.67857142857143,
+        35.67857142857143,
+        35.67857142857143,
+        35.67857142857143,
+        35.67857142857143
+      ],
+      "forecast_total_7d": 249.75000000000006
+    },
+    {
+      "stock_code": "15036",
+      "description": "ASSORTED COLOURS SILK FAN",
+      "training_units": 43502.0,
+      "mean_daily_demand": 45.18888888888889,
+      "std_daily_demand": 120.66267349115243,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 638.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 943.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 268.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 60.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 60.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 181.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 215.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 64.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 93.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 30.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 721.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 224.0
+        }
+      ],
+      "next_7_day_forecast": [
+        38.142857142857146,
+        38.142857142857146,
+        38.142857142857146,
+        38.142857142857146,
+        38.142857142857146,
+        38.142857142857146,
+        38.142857142857146
+      ],
+      "forecast_total_7d": 267.0
+    },
+    {
+      "stock_code": "22492",
+      "description": "MINI PAINT SET VINTAGE ",
+      "training_units": 39987.0,
+      "mean_daily_demand": 73.63333333333334,
+      "std_daily_demand": 169.38941571805296,
+      "weekly_history": [
+        {
+          "week": "Jul 31",
+          "units": 252.0
+        },
+        {
+          "week": "Aug 07",
+          "units": 291.0
+        },
+        {
+          "week": "Aug 14",
+          "units": 180.0
+        },
+        {
+          "week": "Aug 21",
+          "units": 792.0
+        },
+        {
+          "week": "Aug 28",
+          "units": 324.0
+        },
+        {
+          "week": "Sep 04",
+          "units": 1336.0
+        },
+        {
+          "week": "Sep 11",
+          "units": 192.0
+        },
+        {
+          "week": "Sep 18",
+          "units": 937.0
+        },
+        {
+          "week": "Sep 25",
+          "units": 334.0
+        },
+        {
+          "week": "Oct 02",
+          "units": 576.0
+        },
+        {
+          "week": "Oct 09",
+          "units": 760.0
+        },
+        {
+          "week": "Oct 16",
+          "units": 257.0
+        }
+      ],
+      "next_7_day_forecast": [
+        68.82142857142857,
+        68.82142857142857,
+        68.82142857142857,
+        68.82142857142857,
+        68.82142857142857,
+        68.82142857142857,
+        68.82142857142857
+      ],
+      "forecast_total_7d": 481.74999999999994
+    }
+  ],
+  "limitations": [
+    "Historical transactions from one UK online retailer are not current market demand.",
+    "Canceled invoices, returns and nonpositive quantities are excluded from unit-demand forecasts.",
+    "Only the twelve highest-volume pre-holdout SKUs are evaluated; cold-start and long-tail products are not represented.",
+    "The backtest uses aggregate daily units and simple baselines; it omits promotions, stock availability, lead-time variation and supplier constraints.",
+    "The reorder-point simulator assumes independent daily demand and normal lead-time demand; it is an educational what-if, not a service-level guarantee."
+  ]
+}
