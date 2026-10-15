@@ -154,7 +154,7 @@ def main() -> None:
             "name": "Online Retail II", "source": "UCI Machine Learning Repository",
             "source_url": "https://archive.ics.uci.edu/dataset/502/online+retail",
             "citation": "Chen, D. (2012). Online Retail II. UCI ML Repository. DOI: 10.24432/C5CG6D.",
-            "license": "CC BY 4.0", "workbook_sha256": sha256(ZIP_PATH), "source_rows": int(raw_rows),
+            "license": "CC BY 4.0", "source_archive_sha256": sha256(ZIP_PATH), "source_rows": int(raw_rows),
             "valid_positive_sale_rows": int(len(sales)), "canceled_invoice_rows_excluded": int(canceled.sum()),
             "nonpositive_or_invalid_rows_excluded": int(return_or_invalid.sum()),
             "first_sale_date": sales["date"].min().strftime("%Y-%m-%d"), "last_sale_date": max_date.strftime("%Y-%m-%d"),
