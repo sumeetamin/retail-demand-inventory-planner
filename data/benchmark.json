@@ -6,7 +6,7 @@
     "source_url": "https://archive.ics.uci.edu/dataset/502/online+retail",
     "citation": "Chen, D. (2012). Online Retail II. UCI ML Repository. DOI: 10.24432/C5CG6D.",
     "license": "CC BY 4.0",
-    "workbook_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+    "source_archive_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
     "source_rows": 1067371,
     "valid_positive_sale_rows": 1044420,
     "canceled_invoice_rows_excluded": 19494,
